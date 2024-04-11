@@ -9,8 +9,6 @@ name: OpenWrt-CI
 
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: 0 20 * * *
 
 permissions:
   contents: read
@@ -49,15 +47,12 @@ jobs:
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
-      - name: Generate configuration file
-        run: make defconfig
-
       - name: Download packages
         run: make download -j16
 
       - name: Compile firmware
         run: |
-          make -j$(nproc) || make -j1 V=s
+          make V=s -j$(nproc)
           echo "======================="
           echo "Space usage:"
           echo "======================="
