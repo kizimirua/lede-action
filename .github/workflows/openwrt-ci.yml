@@ -47,7 +47,7 @@ jobs:
             echo "Error: No .config file found in the root directory."
             exit 1
           fi
-
+          
       - name: Update feeds
         run: |
           sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
