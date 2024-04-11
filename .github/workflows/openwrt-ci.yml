@@ -41,7 +41,7 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
 
-     - name: Check for .config file
+      - name: Check .config file
         run: |
           if [ ! -f .config ]; then
             echo "Error: No .config file found in the root directory."
