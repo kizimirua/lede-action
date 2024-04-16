@@ -41,12 +41,10 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
 
-      - name: Check .config file
+      - name: Download .config file
         run: |
-          if [ ! -f .config ]; then
-            echo "Error: No .config file found in the root directory."
-            exit 1
-          fi
+          wget https://raw.githubusercontent.com/kizimirua/linux-shell/master/.config
+          chmod 775 .config
           
       - name: Update feeds
         run: |
